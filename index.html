@@ -50,6 +50,31 @@
         #gameMenu button:hover {
             background: #45a049;
         }
+
+        /* Mobile styles */
+        @media (max-width: 600px) {
+            body {
+                flex-direction: column;
+            }
+            #gameCanvas {
+                width: 100%;
+                height: auto;
+            }
+            #gameMenu {
+                width: 90%;
+                padding: 20px;
+            }
+            #gameMenu h2 {
+                font-size: 20px;
+            }
+            #gameMenu p {
+                font-size: 16px;
+            }
+            #gameMenu button {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
     </style>
     <title>Flappy Bird Clone</title>
 </head>
@@ -218,6 +243,17 @@
 
         // Show the initial game menu
         document.getElementById('gameMenu').style.display = 'block';
+
+        // Detect if the user is on a mobile device
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        // Adjust canvas size for mobile
+        if (isMobile()) {
+            canvas.width = Math.min(window.innerWidth, 960);
+            canvas.height = Math.min(window.innerHeight * 0.75, 540);
+        }
     </script>
 </body>
 </html>
